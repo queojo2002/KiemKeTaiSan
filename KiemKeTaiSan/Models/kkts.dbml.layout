@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9" name="kkts">
+  <DataContextMoniker Name="/kktsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="89ba4ec1-4458-4017-bbba-39164c049133" absoluteBounds="0.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/kktsDataContext/ChiTietThietBi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5422f193-c99d-40e7-96ba-1c3953bb8be5" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2cad9d4f-5b5b-4064-9b0b-8df122542c2b" absoluteBounds="3.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/kktsDataContext/ThietBi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b4c4d7a-784e-42e7-8980-bbdbf7a6d256" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="053e001f-b1cc-432b-81ab-d9ba71877461" absoluteBounds="0.75, 3.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/kktsDataContext/KhuVucPhong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66875669-90b3-4638-b054-20d63abfb5e0" absoluteBounds="0.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2ca69f75-4cce-4cd5-b21f-dcb13de9c4cf" absoluteBounds="3.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/kktsDataContext/LoaiPhong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="348446ca-3b7b-4776-906b-f5857b2870bb" absoluteBounds="3.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6341a6fe-dd99-4f3e-aca2-b2569735a6f1" absoluteBounds="6.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/kktsDataContext/LoaiThietBi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31431f58-648c-45ef-b135-948091264ae9" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2061d540-8de2-49fb-a4b1-217ddbcb93ee" absoluteBounds="0.75, 6.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/kktsDataContext/Phong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25bc6f4b-a1fe-4f7b-acf5-f4cc0d32fda7" absoluteBounds="0.765, 7.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

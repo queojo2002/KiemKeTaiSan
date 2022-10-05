@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+<!-- ========== Left Sidebar Start ========== -->
+<div class="leftside-menu">
+    <!-- LOGO -->
+    <a href="#" class="logo text-center logo-light">
+        <span class="logo-lg">
+            <img src="~/assets/images/Logo_TDMU.png" alt="" height="50">
+        </span>
+        <span class="logo-sm">
+            <img src="~/assets/images/Logo_TDMU.png" alt="" height="61">
+        </span>
+    </a>
+    <!-- LOGO -->
+    <a href="index.html" class="logo text-center logo-dark">
+        <span class="logo-lg">
+            <img src="~/assets/images/logo-dark.png" alt="" height="16">
+        </span>
+        <span class="logo-sm">
+            <img src="~/assets/images/logo_sm_dark.png" alt="" height="16">
+        </span>
+    </a>
+    <div class="h-100" id="leftside-menu-container" data-simplebar>
+        <!--- Sidemenu -->
+        <ul class="side-nav">
+            <li class="side-nav-title side-nav-item">Thông kê sơ lược</li>
+            <li class="side-nav-item">
+                <a href="@Url.Action("Index","TrangChu")" id="test" class="side-nav-link">
+                    <i class="uil-home-alt"></i>
+                    <span>Trang tổng quan</span>
+                    <span class="badge bg-success float-end">1</span>
+                </a>
+            </li>
+            <li class="side-nav-title side-nav-item">Quản lý</li>
+            <li class="side-nav-item @ViewBag.ActiveMenu">
+                <a data-bs-toggle="collapse" href="#sidebarQLPhong" aria-expanded="false" aria-controls="sidebarQLPhong" class="side-nav-link">
+                    <i class="dripicons-checklist"></i>
+                    <span> Quản lý phòng </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarQLPhong">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="@Url.Action("Index","Phong")">Phòng hiện có</a>
+                        </li>
+                        <li>
+                            <a href="#">Khu vực phòng</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","LoaiPhong")">Loại phòng</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarQLTB" aria-expanded="false" aria-controls="sidebarQLTB" class="side-nav-link">
+                    <i class="dripicons-lock"></i>
+                    <span> Quản lý thiết bị </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarQLTB">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="#">Thiết bị hiện có</a>
+                        </li>
+                        <li>
+                            <a href="#">Loại thiết bị</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+
+            <li class="side-nav-title side-nav-item">Phân bố</li>
+            <li class="side-nav-item">
+                <a href="#" target="_blank" class="side-nav-link">
+                    <i class=" dripicons-preview"></i>
+                    <span>Xem danh sách phân bố</span>
+                </a>
+            </li>
+
+
+            <li class="side-nav-item">
+                <a href="#" target="_blank" class="side-nav-link">
+                    <i class="uil-globe"></i>
+                    <span>Phân bố thiết bị</span>
+                </a>
+            </li>
+
+
+
+            <li class="side-nav-title side-nav-item mt-1">Nghiệp vụ</li>
+
+
+        </ul>
+        <!-- End Sidebar -->
+        <div class="clearfix"></div>
+    </div>
+    <!-- Sidebar -left -->
+
+</div>
+<!-- Left Sidebar End -->
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->

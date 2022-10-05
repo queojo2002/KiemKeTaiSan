@@ -1,0 +1,68 @@
+﻿@model IEnumerable<KiemKeTaiSan.Models.Phong>
+
+@{
+    ViewBag.Title = "Quản lý phòng";
+    ViewBag.ActiveMenu = "menuitem-active";
+    Layout = "~/Areas/QuanTriVien/Views/Shared/_LayoutQTV.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">
+                    Danh sách phòng hiện có tại trường!
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-new-task-modal" class="btn btn-success btn-sm ms-3">Thêm mới phòng</a>
+                </h4>
+                <ul class="nav nav-tabs nav-bordered mb-3">
+
+                </ul>
+                <!-- end nav-->
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="basic-datatable-preview">
+                        <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table style="text-align:center" id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên phòng</th>
+                                                <th>Khu vực phòng</th>
+                                                <th>Loại phòng</th>
+                                                <th>Ghi chú</th>
+                                                <th>Hành động</th>
+                                                <th>Ngày cập nhật cuối cùng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.TenPhong)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.MaLP)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.MaKV)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
+                                                <td class="table-action">
+                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                </td>
+                                                <td>@Html.FormatValue(item.NgayCapNhat, "{0:dd/MM/yyyy}")</td>
+                                            </tr>
+
+                                            }
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
