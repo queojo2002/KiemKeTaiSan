@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<KiemKeTaiSan.Models.LoaiPhong>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý loại phòng";
     Layout = "~/Areas/QuanTriVien/Views/Shared/_LayoutQTV.cshtml";
 }
 
@@ -9,16 +8,31 @@
 
 <div class="row">
     <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Quản lý phòng</a></li>
+                    <li class="breadcrumb-item active">Loại phòng</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Danh sách các loại phòng</h4>
+        </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">
-                    Danh sách các loại phòng hiện có tại trường!
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-new-task-modal" class="btn btn-success btn-sm ms-3">Thêm mới loại phòng</a>
-                </h4>
-                <ul class="nav nav-tabs nav-bordered mb-3">
-                </ul>
                 <!-- end nav-->
                 <div class="tab-content">
+                    <div class="row mb-2">
+                        <div class="col-sm-4">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#add_new_loaiphong" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Thêm mới loại phòng</a>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="text-sm-end">
+                                <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                                <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                <button type="button" class="btn btn-light mb-2">Export</button>
+                            </div>
+                        </div><!-- end col-->
+                    </div>
                     <div class="tab-pane show active" id="basic-datatable-preview">
                         <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                             <div class="row">
@@ -26,76 +40,262 @@
                                     <table style="text-align:center" id="basic-datatable" class="table dt-responsive nowrap w-100">
                                         <thead>
                                             <tr>
-                                                <th>Tên phòng</th>
+                                                <th>Tên loại phòng</th>
                                                 <th>Ghi chú</th>
                                                 <th>Ngày cập nhật cuối cùng</th>
                                                 <th>Hành động</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            @foreach (var item in Model)
-                                            {
-                                            <tr>
-                                                <td>@Html.DisplayFor(modelItem => item.TenLP)</td>
-                                                <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
-                                                <td>
-                                                    @*Định dạng hiển thị*@ @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
-                                                </td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            }
-
-
-
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 </div>
 
 
-<!--  Add new task modal -->
-<div class="modal fade task-modal-content" id="add-new-task-modal" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+<!-- Thêm Mới Loại Phòng -->
+<div id="add_new_loaiphong" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="NewTaskModalLabel">THÊM MỚI LOẠI PHÒNG</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
             <div class="modal-body">
-                <form class="p-2"> 
+                <div class="text-center mt-2 mb-4">
+                    <h4>Thêm mới loại phòng</h4>
+                </div>
+                <form action="#" class="ps-3 pe-3">
                     <div class="mb-3">
                         <label for="task-title" class="form-label">Tên loại phòng: </label>
-                        <input type="text" class="form-control form-control-light" id="task-title" placeholder="Tên loại phòng?">
+                        <input type="text" class="form-control form-control-light" id="sTenLP" name="sTenLP" placeholder="Tên loại phòng?">
                     </div>
                     <div class="mb-3">
                         <label for="task-description" class="form-label">Ghi chú: </label>
-                        <textarea class="form-control form-control-light" id="task-description" rows="3"></textarea>
-                    </div>   
+                        <textarea class="form-control form-control-light" id="sGhiChu" name="sGhiChu" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button id="huybo_loaiphong" type="button" class="btn btn-light"  data-dismiss="modal">Hủy bỏ</button>
+                        <button id="themmoi_loaiphong" class="btn rounded-pill btn-primary" type="button">Thêm mới</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<!-- Sửa Loại Phòng -->
+<div class="modal fade task-modal-content" id="sua_loaiphong" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa loại phòng</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="iMaLP" name="iMaLP">
+                <form class="p-2">
+                    <div class="mb-3">
+                        <label for="task-title" class="form-label">Tên loại phòng: </label>
+                        <input type="text" class="form-control form-control-light" id="sTenLP_Edit" name="sTenLP_Edit" placeholder="Tên loại phòng?">
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-description" class="form-label">Ghi chú: </label>
+                        <textarea class="form-control form-control-light" id="sGhiChu_Edit" name="sGhiChu_Edit" rows="3"></textarea>
+                    </div>
 
                     <div class="text-end">
-                        <button type="button" class="btn btn-light" onclick = "close_modal()" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Create</button>
+                        <button type="button" id="huybo_sua_loaiphong" class="btn btn-light" data-dismiss="modal">Hủy bỏ</button>
+                        <button type="button" id="xacnhan_sua_loaiphong" class="btn btn-primary">Sửa</button>
                     </div>
+
                 </form>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+
+
+
+
 <script>
-    function close_modal() {
-        $('#add-new-task-modal').modal('hide');
+
+
+    $("#themmoi_loaiphong").click(function () {
+        const sTenLP = document.getElementById("sTenLP");
+        if (sTenLP.value == "") {
+            $.NotificationApp.send("Thông báo", "Chưa nhập Tên Loại Phòng cần thêm!!!", "bottom-right", "Background color", "error");
+        } else {
+            $('#add_new_loaiphong').modal("hide");
+
+            $.confirm({
+                title: 'Thông báo',
+                content: 'Bạn có chắc chắn muốn thêm loại phòng?',
+                theme: 'dark',
+                buttons: {
+                    XacNhan: {
+                        text: 'Xác nhận',
+                        btnClass: 'btn-success',
+                        action: function () {
+                            
+                            $.ajax({
+                                url: '@Url.Action("Insert_LoaiPhong", "LoaiPhong")',
+                                dataType: "json",
+                                type: "POST",
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify({ TenLP: $("#sTenLP").val(), GhiChu: $("#sGhiChu").val() }),
+                                async: true,
+                                processData: false,
+                                cache: false,
+                                success: function (data) {
+                                    if (data.succcess == true) {
+                                        $.alert({
+                                            title: 'Thông báo',
+                                            theme: 'dark',
+                                            content: 'Thêm mới thành công !!!',
+                                        });
+                                        $('#basic-datatable').dataTable().fnClearTable();
+                                        $('#basic-datatable').dataTable().fnDestroy();
+                                        LoadData();
+                                        $.getScript('../../assets/js/pages/demo.datatable-init.js', function () { });
+
+                                    } else {
+                                        $.alert({
+                                            title: 'Thông báo',
+                                            theme: 'dark',
+                                            content: data.Message,
+                                        });
+                                    }
+                                },
+                                error: function (xhr) {
+                                    $.alert({
+                                        title: 'Thông báo',
+                                        theme: 'dark',
+                                        content: "Có lỗi không xác định!!!",
+                                    });
+                                }
+                            })
+                            $("#sTenLP").val("");
+                            $("#sGhiChu").val("");
+                            $("#iMaLP").val("");
+                        }
+                    },
+                    HuyBo: {
+                        text: 'Hủy bỏ',
+                        btnClass: 'btn-warning',
+                        action: function () {
+                            $("#sTenLP").val("");
+                            $("#sGhiChu").val("");
+                            $("#iMaLP").val("");
+                            $.alert({
+                                title: 'Hủy bỏ',
+                                theme: 'dark',
+                                content: 'Đã hủy bỏ thêm!',
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+
+    $("#xacnhan_sua_loaiphong").click(function () {
+       
+        });
+
+
+
+    $("#huybo_loaiphong").click(function () {
+        $("#sTenLP").val("");
+        $("#sGhiChu").val("");
+        $("#iMaLP").val("");
+        $('#add_new_loaiphong').modal('hide');
+    });
+
+    $("#huybo_sua_loaiphong").click(function () {
+        $('#sTenLP_Edit').empty();
+        $('#sGhiChu_Edit').empty();
+        $('#sua_loaiphong').modal('hide');
+    });
+
+
+
+
+
+    function show_modal_edit(MaLP) {
+          $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Get_LoaiPhong_By_MaLP", "LoaiPhong")',
+            dataType: 'json',
+            data: { MaLP: MaLP },
+            contentType: 'application/json;charset=utf-8',
+              success: function (data) {
+                  if (data.data != undefined) {
+                      $.each(data.data, function (i, item) {
+                          $('#iMaLP').val(MaLP);
+                          $('#sTenLP_Edit').val(item.TenLP);
+                          $('#sGhiChu_Edit').val(item.GhiChu);
+                      });
+                      $('#sua_loaiphong').modal('show');
+                  } else {
+                      alert("Không có loại phòng này !!!");
+                  }
+            },
+            error: function (ex) {
+                alert("Không có loại phòng này !!!");
+            }
+          });
     }
-    
+
+
+    function LoadData() {
+        $("#basic-datatable tbody tr").remove();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Get_LoaiPhong", "LoaiPhong")',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                var items = '';
+                $.each(data.data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td>" + item.TenLP + "</td>"
+                        + "<td>" + item.GhiChu + "</td>"
+                        + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
+                        + '<td class="table-action"><a onclick = "show_modal_edit('+item.MaLP+');" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a>'
+                        + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
+                        + "</tr>";
+                    $('#basic-datatable').append(rows);
+                });
+            },
+            error: function (ex) {
+                alert("Error_Load_Data");
+            }
+        });
+        return false;
+    }
+
+
+
+    LoadData();
+
+
+
+
+
 </script>

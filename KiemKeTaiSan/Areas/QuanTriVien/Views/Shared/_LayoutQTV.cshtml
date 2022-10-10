@@ -18,17 +18,25 @@
     <link href="~/assets/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
-
-
     <!-- App css -->
     <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
     <link href="~/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+    <link href="~/assets/css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 </head>
+<script>
 
+    function ToJavaScriptDate(value) {
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+    }
+</script>
 <body class="loading" data-layout-config='{"layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":true, "showRightSidebarOnStart": false}'>
     <!-- Begin page -->
     <div class="wrapper">
@@ -178,9 +186,15 @@
     <script src="~/assets/js/vendor/dataTables.keyTable.min.js"></script>
     <script src="~/assets/js/vendor/dataTables.select.min.js"></script>
     <!-- third party js ends -->
+
     <!-- demo app -->
     <script src="~/assets/js/pages/demo.datatable-init.js"></script>
     <!-- end demo js-->
 
+
+    <script src="~/assets/js/jquery-confirm.js"></script>
+
 </body>
+
+
 </html>

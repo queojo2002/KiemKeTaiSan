@@ -158,6 +158,7 @@
     <Content Include="assets\css\icons-rtl.min.css" />
     <Content Include="assets\css\icons.css" />
     <Content Include="assets\css\icons.min.css" />
+    <Content Include="assets\css\jquery-confirm.css" />
     <Content Include="assets\css\vendor\32px.png" />
     <Content Include="assets\css\vendor\britecharts.min.css" />
     <Content Include="assets\css\vendor\buttons.bootstrap5.css" />
@@ -261,6 +262,7 @@
     <Content Include="assets\images\waves.png" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\app.min.js" />
+    <Content Include="assets\js\jquery-confirm.js" />
     <Content Include="assets\js\pages\demo.apex-area.js" />
     <Content Include="assets\js\pages\demo.apex-bar.js" />
     <Content Include="assets\js\pages\demo.apex-bubble.js" />
@@ -417,6 +419,7 @@
     <Content Include="Areas\QuanTriVien\Views\TrangChu\Index.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\Phong\Index.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\LoaiPhong\Index.cshtml" />
+    <Content Include="assets\css\jquery-confirm.less" />
     <None Include="Models\kkts.dbml.layout">
       <DependentUpon>kkts.dbml</DependentUpon>
     </None>
