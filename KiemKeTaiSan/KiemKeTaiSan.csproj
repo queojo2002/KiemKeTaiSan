@@ -122,7 +122,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\LoaiPhongController.cs" />
+    <Compile Include="Areas\QuanTriVien\Controllers\PhanBoController.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\PhongController.cs" />
+    <Compile Include="Areas\QuanTriVien\Controllers\TaiSanController.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\TrangChuController.cs" />
     <Compile Include="Areas\QuanTriVien\QuanTriVienAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -420,6 +422,8 @@
     <Content Include="Areas\QuanTriVien\Views\Phong\Index.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\LoaiPhong\Index.cshtml" />
     <Content Include="assets\css\jquery-confirm.less" />
+    <Content Include="Areas\QuanTriVien\Views\TaiSan\Index.cshtml" />
+    <Content Include="Areas\QuanTriVien\Views\PhanBo\XemDanhSachPhanBo.cshtml" />
     <None Include="Models\kkts.dbml.layout">
       <DependentUpon>kkts.dbml</DependentUpon>
     </None>

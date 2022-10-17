@@ -25,7 +25,7 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
             <li class="side-nav-title side-nav-item">Thông kê sơ lược</li>
-            <li class="side-nav-item">
+            <li class="side-nav-item @ViewBag.ActiveMenu">
                 <a href="@Url.Action("Index","TrangChu")" id="test" class="side-nav-link">
                     <i class="uil-home-alt"></i>
                     <span>Trang tổng quan</span>
@@ -33,47 +33,32 @@
                 </a>
             </li>
             <li class="side-nav-title side-nav-item">Quản lý</li>
-            <li class="side-nav-item @ViewBag.ActiveMenu">
-                <a data-bs-toggle="collapse" href="#sidebarQLPhong" aria-expanded="false" aria-controls="sidebarQLPhong" class="side-nav-link">
-                    <i class="dripicons-checklist"></i>
-                    <span> Quản lý phòng </span>
-                    <span class="menu-arrow"></span>
+
+
+            <li class="side-nav-item">
+                <a href="@Url.Action("Index","NguoiDung")" aria-expanded="false" aria-controls="sidebarQLPhong" class="side-nav-link">
+                    <i class="mdi mdi-account-group-outline"></i>
+                    <span>Quản lý người dùng</span>
                 </a>
-                <div class="collapse" id="sidebarQLPhong">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="@Url.Action("Index","Phong")">Phòng hiện có</a>
-                        </li>
-                        <li>
-                            <a href="#">Khu vực phòng</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index","LoaiPhong")">Loại phòng</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
+
+            <li class="side-nav-item">
+                <a href="@Url.Action("Index","Phong")" aria-expanded="false" aria-controls="sidebarQLPhong" class="side-nav-link">
+                    <i class="dripicons-checklist"></i>
+                    <span>Quản lý phòng</span>
+                </a>
+            </li>
 
 
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarQLTB" aria-expanded="false" aria-controls="sidebarQLTB" class="side-nav-link">
+                <a href="@Url.Action("Index","TaiSan")" aria-expanded="false" aria-controls="sidebarQLTB" class="side-nav-link">
                     <i class="dripicons-lock"></i>
-                    <span> Quản lý thiết bị </span>
-                    <span class="menu-arrow"></span>
+                    <span>Quản lý tài sản</span>
                 </a>
-                <div class="collapse" id="sidebarQLTB">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="#">Thiết bị hiện có</a>
-                        </li>
-                        <li>
-                            <a href="#">Loại thiết bị</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
+
 
 
 
@@ -81,8 +66,8 @@
 
             <li class="side-nav-title side-nav-item">Phân bố</li>
             <li class="side-nav-item">
-                <a href="#" target="_blank" class="side-nav-link">
-                    <i class=" dripicons-preview"></i>
+                <a href="@Url.Action("XemDanhSachPhanBo","PhanBo")" aria-expanded="false" aria-controls="sidebarDSPB" class="side-nav-link">
+                    <i class="dripicons-preview"></i>
                     <span>Xem danh sách phân bố</span>
                 </a>
             </li>

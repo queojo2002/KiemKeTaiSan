@@ -1,9 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Quản lý phòng";
+    ViewBag.Title = "Quản lý tài sản";
     Layout = "~/Areas/QuanTriVien/Views/Shared/_LayoutQTV.cshtml";
 }
-
-
 
 <div class="row">
     <div class="col-12">
@@ -11,49 +9,54 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active"><a href="javascript: void(0);">Quản lý</a></li>
-                    <li class="breadcrumb-item ">Quản lý phòng</li>
+                    <li class="breadcrumb-item ">Quản lý tài sản</li>
                 </ol>
             </div>
         </div>
     </div>
 </div>
 
+
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
 
-                <h4 class="header-title">Quản lý phòng</h4>
+                <h4 class="header-title">Quản lý tài sản</h4>
                 <p class="text-muted font-14">
-                    Quản lý các thông tin cơ bản của phòng, xem được các khu vực cũng như là dãy phòng có trên hệ thống của trường.
+                    Quản lý các tài sản hiện có ở trường.
                 </p>
                 <ul class="nav nav-tabs nav-bordered mb-3">
                     <li class="nav-item">
-                        <a href="#phong_view" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                            Phòng
+                        <a href="#taisan_view" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                            Tài sản
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#khuvucphong_view" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                            Khu vực phòng
+                        <a href="#nhomtaisan_view" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                            Nhóm tài sản
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#loaiphong_view" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                            Loại phòng
+                        <a href="#loaitaisan_view" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                            Loại tài sản
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane show active" id="phong_view">
+                    <div class="tab-pane show active" id="taisan_view">
                         <div class="table-responsive-sm">
-                            <table id="table_phong" class="table dt-responsive nowrap w-100">
+                            <table id="table_taisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã phòng</th>
-                                        <th>Tên phòng</th>
-                                        <th>Thuộc khu vực </th>
-                                        <th>Loại phòng</th>
+                                        <th>Mã tài sản</th>
+                                        <th>Thuộc nhóm tài sản</th>
+                                        <th>Thuộc loại tài sản</th>
+                                        <th>Tên tài sản</th>
+                                        <th>Giá trị</th>
+                                        <th>Hãng sản xuất</th>
+                                        <th>Năm sản xuất</th>
+                                        <th>Nước sản xuất</th>
                                         <th>Ghi chú</th>
                                         <th>Ngày cập nhật cuối cùng</th>
                                         <th>Hành động</th>
@@ -66,13 +69,14 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="khuvucphong_view">
+                    <div class="tab-pane" id="nhomtaisan_view">
                         <div class="table-responsive-sm">
-                            <table id="table_kvphong" class="table dt-responsive nowrap w-100">
+                            <table id="table_nhomtaisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã khu vực phòng</th>
-                                        <th>Tên khu vực phòng</th>
+                                        <th>Mã nhóm tài sản</th>
+                                        <th>Thuộc loại tài sản</th>
+                                        <th>Tên nhóm tài sản</th>
                                         <th>Ghi chú</th>
                                         <th>Ngày cập nhật cuối cùng</th>
                                         <th>Hành động</th>
@@ -86,13 +90,13 @@
                     </div>
 
 
-                    <div class="tab-pane" id="loaiphong_view">
+                    <div class="tab-pane" id="loaitaisan_view">
                         <div class="table-responsive-sm">
-                            <table id="table_loaiphong" class="table dt-responsive nowrap w-100">
+                            <table id="table_loaitaisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã loại phòng</th>
-                                        <th>Tên loại phòng</th>
+                                        <th>Mã loại tài sản</th>
+                                        <th>Tên loại tài sản</th>
                                         <th>Ghi chú</th>
                                         <th>Ngày cập nhật cuối cùng</th>
                                         <th>Hành động</th>
@@ -112,62 +116,27 @@
 </div>
 
 
-
-
-
-
-
 <script>
 
-
-
-function LoadData_LoaiPhong() {
-    $("#table_loaiphong tbody tr").remove();
+function LoadData_LoaiTaiSan() {
+    $("#table_loaitaisan tbody tr").remove();
     $.ajax({
         type: 'GET',
-        url: '@Url.Action("Select_LoaiPhong", "Phong")',
+        url: '@Url.Action("Select_LoaiTaiSan", "TaiSan")',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
                 var rows = "<tr>"
-                    + "<td>" + item.MaLP + "</td>"
-                    + "<td>" + item.TenLP + "</td>"
+                    + "<td>" + item.MaLoaiTS + "</td>"
+                    + "<td>" + item.TenLoaiTS + "</td>"
                     + "<td>" + item.GhiChu + "</td>"
                     + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
                     + '<td class="table-action"><a onclick = "show_modal_edit(' + item.MaLP +',"loaiphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a>'
                     + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
                     + "</tr>";
-                $('#table_loaiphong').append(rows);
-            });
-        },
-        error: function (ex) {
-            alert("Error_Load_Data");
-        }
-    });
-    return false;
-}
-
-function LoadData_KhuVucPhong() {
-    $("#table_kvphong tbody tr").remove();
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("Select_KhuVucPhong", "Phong")',
-        dataType: 'json',
-        contentType: 'application/json;charset=utf-8',
-        success: function (data) {
-            var items = '';
-            $.each(data.data, function (i, item) {
-                var rows = "<tr>"
-                    + "<td>" + item.MaKV + "</td>"
-                    + "<td>" + item.TenKV + "</td>"
-                    + "<td>" + item.GhiChu + "</td>"
-                    + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
-                    + '<td class="table-action"><a onclick = "show_modal_edit('+item.MaLP+',"khuvucphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a>'
-                    + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
-                    + "</tr>";
-                $('#table_kvphong').append(rows);
+                $('#table_loaitaisan').append(rows);
             });
         },
         error: function (ex) {
@@ -177,29 +146,26 @@ function LoadData_KhuVucPhong() {
     return false;
     }
 
- function LoadData_Phong() {
-     $("#table_phong tbody tr").remove();
+function LoadData_NhomTaiSan() {
+    $("#table_nhomtaisan tbody tr").remove();
     $.ajax({
         type: 'GET',
-        url: '@Url.Action("Select_Phong", "Phong")',
+        url: '@Url.Action("Select_NhomTaiSan", "TaiSan")',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
                 var rows = "<tr>"
-                    + "<td>" + item.MaPhong + "</td>"
-                    + "<td>" + item.TenPhong + "</td>"
-                    + "<td>" + item.TenKV + "</td>"
-                    + "<td>" + item.TenLP + "</td>"
+                    + "<td>" + item.MaNhomTS + "</td>"
+                    + "<td>" + item.TenLoaiTS + "</td>"
+                    + "<td>" + item.TenNhomTS + "</td>"
                     + "<td>" + item.GhiChu + "</td>"
                     + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
-                    + '<td class="table-action">'
-                    + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-eye"></i></a>'
-                    + '<a onclick = "show_modal_edit(' + item.MaLP +', "phong_edit");" href = "javascript:void(0)" class="action-icon" > <i class="mdi mdi-pencil"></i></a > '
+                    + '<td class="table-action"><a onclick = "show_modal_edit(' + item.MaLP +',"loaiphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a>'
                     + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
                     + "</tr>";
-                $('#table_phong').append(rows);
+                $('#table_nhomtaisan').append(rows);
             });
         },
         error: function (ex) {
@@ -208,9 +174,43 @@ function LoadData_KhuVucPhong() {
     });
     return false;
 }
-    LoadData_Phong();
-    LoadData_KhuVucPhong();
-    LoadData_LoaiPhong();
 
 
+function LoadData_TaiSan() {
+    $("#table_taisan tbody tr").remove();
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("Select_TaiSan", "TaiSan")',
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        success: function (data) {
+            var items = '';
+            $.each(data.data, function (i, item) {
+                var rows = "<tr>"
+                    + "<td>" + item.MaTS + "</td>"
+                    + "<td>" + item.TenNhomTS + "</td>"
+                    + "<td>" + item.TenLoaiTS + "</td>"
+                    + "<td>" + item.TenTS + "</td>"
+                    + "<td>" + item.GiaTri + "</td>"
+                    + "<td>" + item.HangSanXuat + "</td>"
+                    + "<td>" + item.NamSanXuat + "</td>"
+                    + "<td>" + item.NuocSanXuat + "</td>"
+                    + "<td>" + item.GhiChu + "</td>"
+                    + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
+                    + '<td class="table-action"><a onclick = "show_modal_edit(' + item.MaLP +',"loaiphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a>'
+                    + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
+                    + "</tr>";
+                $('#table_taisan').append(rows);
+            });
+        },
+        error: function (ex) {
+            alert("Error_Load_Data");
+        }
+    });
+    return false;
+}
+
+    LoadData_LoaiTaiSan();
+    LoadData_NhomTaiSan();
+    LoadData_TaiSan();
 </script>
