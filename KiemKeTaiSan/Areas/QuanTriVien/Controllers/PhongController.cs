@@ -42,5 +42,7 @@ namespace KiemKeTaiSan.Areas.QuanTriVien.Controllers
             return Json(new { data = get_data }, JsonRequestBehavior.AllowGet);
         }
 
+        
+
     }
 }

@@ -19,6 +19,7 @@
       <Column Name="MaNhomTS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TenTS" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="GiaTri" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HangSanXuat" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="NamSanXuat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NuocSanXuat" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />

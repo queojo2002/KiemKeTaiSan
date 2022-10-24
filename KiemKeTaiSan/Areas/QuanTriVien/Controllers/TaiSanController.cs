@@ -39,7 +39,7 @@ namespace KiemKeTaiSan.Areas.QuanTriVien.Controllers
             var get_data = from s in db.TaiSans.OrderByDescending(a => a.MaTS)
                            join nts in db.NhomTaiSans on s.MaNhomTS equals nts.MaNhomTS
                            join lts in db.LoaiTaiSans on nts.MaLoaiTS equals lts.MaLoaiTS
-                           select new { s.MaTS, s.MaNhomTS, nts.TenNhomTS, lts.MaLoaiTS, lts.TenLoaiTS, s.TenTS, s.GiaTri, s.HangSanXuat, s.NamSanXuat, s.NuocSanXuat, s.GhiChu, s.NgayCapNhat };
+                           select new { s.MaTS, s.MaNhomTS, nts.TenNhomTS, lts.MaLoaiTS, lts.TenLoaiTS, s.TenTS, s.GiaTri, s.SoLuong,s.HangSanXuat, s.NamSanXuat, s.NuocSanXuat, s.GhiChu, s.NgayCapNhat };
             return Json(new { data = get_data }, JsonRequestBehavior.AllowGet);
         }
 

@@ -424,6 +424,7 @@
     <Content Include="assets\css\jquery-confirm.less" />
     <Content Include="Areas\QuanTriVien\Views\TaiSan\Index.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\PhanBo\XemDanhSachPhanBo.cshtml" />
+    <Content Include="Areas\QuanTriVien\Views\PhanBo\PhanBoThietBi.cshtml" />
     <None Include="Models\kkts.dbml.layout">
       <DependentUpon>kkts.dbml</DependentUpon>
     </None>

@@ -49,17 +49,18 @@
                             <table id="table_taisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã tài sản</th>
-                                        <th>Thuộc nhóm tài sản</th>
-                                        <th>Thuộc loại tài sản</th>
-                                        <th>Tên tài sản</th>
-                                        <th>Giá trị</th>
-                                        <th>Hãng sản xuất</th>
-                                        <th>Năm sản xuất</th>
-                                        <th>Nước sản xuất</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã tài sản</th>
+                                        <th class="table-light">Thuộc nhóm tài sản</th>
+                                        <th class="table-light">Thuộc loại tài sản</th>
+                                        <th class="table-light">Tên tài sản</th>
+                                        <th class="table-light">Giá trị</th>
+                                        <th class="table-light">Số lượng</th>
+                                        <th class="table-light">Hãng sản xuất</th>
+                                        <th class="table-light">Năm sản xuất</th>
+                                        <th class="table-light">Nước sản xuất</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -74,12 +75,12 @@
                             <table id="table_nhomtaisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã nhóm tài sản</th>
-                                        <th>Thuộc loại tài sản</th>
-                                        <th>Tên nhóm tài sản</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã nhóm tài sản</th>
+                                        <th class="table-light">Thuộc loại tài sản</th>
+                                        <th class="table-light">Tên nhóm tài sản</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -95,11 +96,11 @@
                             <table id="table_loaitaisan" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã loại tài sản</th>
-                                        <th>Tên loại tài sản</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã loại tài sản</th>
+                                        <th class="table-light">Tên loại tài sản</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -192,6 +193,7 @@ function LoadData_TaiSan() {
                     + "<td>" + item.TenLoaiTS + "</td>"
                     + "<td>" + item.TenTS + "</td>"
                     + "<td>" + item.GiaTri + "</td>"
+                    + "<td>" + item.SoLuong + "</td>"
                     + "<td>" + item.HangSanXuat + "</td>"
                     + "<td>" + item.NamSanXuat + "</td>"
                     + "<td>" + item.NuocSanXuat + "</td>"

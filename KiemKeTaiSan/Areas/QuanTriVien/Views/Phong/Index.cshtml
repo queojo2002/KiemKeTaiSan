@@ -50,13 +50,13 @@
                             <table id="table_phong" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã phòng</th>
-                                        <th>Tên phòng</th>
-                                        <th>Thuộc khu vực </th>
-                                        <th>Loại phòng</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã phòng</th>
+                                        <th class="table-light">Tên phòng</th>
+                                        <th class="table-light">Thuộc khu vực </th>
+                                        <th class="table-light">Loại phòng</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -71,11 +71,11 @@
                             <table id="table_kvphong" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã khu vực phòng</th>
-                                        <th>Tên khu vực phòng</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã khu vực phòng</th>
+                                        <th class="table-light">Tên khu vực phòng</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -91,11 +91,11 @@
                             <table id="table_loaiphong" class="table dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>Mã loại phòng</th>
-                                        <th>Tên loại phòng</th>
-                                        <th>Ghi chú</th>
-                                        <th>Ngày cập nhật cuối cùng</th>
-                                        <th>Hành động</th>
+                                        <th class="table-light">Mã loại phòng</th>
+                                        <th class="table-light">Tên loại phòng</th>
+                                        <th class="table-light">Ghi chú</th>
+                                        <th class="table-light">Ngày cập nhật cuối cùng</th>
+                                        <th class="table-light">Hành động</th>
                                     </tr>
                                 </thead>
 
@@ -132,7 +132,7 @@ function LoadData_LoaiPhong() {
             var items = '';
             $.each(data.data, function (i, item) {
                 var rows = "<tr>"
-                    + "<td>" + item.MaLP + "</td>"
+                    + '<td><a href="#" class="text-body fw-bold">#' + item.MaLP + '</a></td>'
                     + "<td>" + item.TenLP + "</td>"
                     + "<td>" + item.GhiChu + "</td>"
                     + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
@@ -160,7 +160,7 @@ function LoadData_KhuVucPhong() {
             var items = '';
             $.each(data.data, function (i, item) {
                 var rows = "<tr>"
-                    + "<td>" + item.MaKV + "</td>"
+                    + '<td><a href="#" class="text-body fw-bold">#' + item.MaKV + '</a></td>'
                     + "<td>" + item.TenKV + "</td>"
                     + "<td>" + item.GhiChu + "</td>"
                     + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
@@ -188,7 +188,7 @@ function LoadData_KhuVucPhong() {
             var items = '';
             $.each(data.data, function (i, item) {
                 var rows = "<tr>"
-                    + "<td>" + item.MaPhong + "</td>"
+                    + '<td><a href="#" class="text-body fw-bold">#' + item.MaPhong + '</a></td>'
                     + "<td>" + item.TenPhong + "</td>"
                     + "<td>" + item.TenKV + "</td>"
                     + "<td>" + item.TenLP + "</td>"

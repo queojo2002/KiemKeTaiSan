@@ -486,6 +486,8 @@ namespace KiemKeTaiSan.Models
 		
 		private System.Nullable<int> _GiaTri;
 		
+		private System.Nullable<int> _SoLuong;
+		
 		private string _HangSanXuat;
 		
 		private System.Nullable<System.DateTime> _NamSanXuat;
@@ -514,6 +516,8 @@ namespace KiemKeTaiSan.Models
     partial void OnTenTSChanged();
     partial void OnGiaTriChanging(System.Nullable<int> value);
     partial void OnGiaTriChanged();
+    partial void OnSoLuongChanging(System.Nullable<int> value);
+    partial void OnSoLuongChanged();
     partial void OnHangSanXuatChanging(string value);
     partial void OnHangSanXuatChanged();
     partial void OnNamSanXuatChanging(System.Nullable<System.DateTime> value);
@@ -615,6 +619,26 @@ namespace KiemKeTaiSan.Models
 					this._GiaTri = value;
 					this.SendPropertyChanged("GiaTri");
 					this.OnGiaTriChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this.OnSoLuongChanging(value);
+					this.SendPropertyChanging();
+					this._SoLuong = value;
+					this.SendPropertyChanged("SoLuong");
+					this.OnSoLuongChanged();
 				}
 			}
 		}
