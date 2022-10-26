@@ -92,58 +92,38 @@
                     <div class="tab-pane show" id="dspb_view">
                         <div class="row">
                             <div class="col-12">
-                                    <div class="row mb-2">
-                                        <div class="col-xl-8">
-                                            <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
-                                                <div class="col-auto">
-                                                    <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Tìm kiếm...">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-xl-4">
-                                            <div class="text-xl-end mt-xl-0 mt-2">
-                                                <button type="button" class="btn btn-light mb-2">Import</button>
-                                                <button type="button" class="btn btn-light mb-2">Export</button>
+                                <div class="row mb-2">
+                                    <div class="col-xl-8">
+                                        <form class="row gy-2 gx-2 align-items-center justify-content-xl-start justify-content-between">
+                                            <div class="col-auto">
+                                                <label for="inputPassword2" class="visually-hidden">Search</label>
+                                                <input type="search" class="form-control" id="inputPassword2" placeholder="Tìm kiếm...">
                                             </div>
-                                        </div><!-- end col-->
+                                        </form>
                                     </div>
-
-                                        <div class="table-responsive">
-                                            <table id="table_pb" class="table table-centered mb-0">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>STT</th>
-                                                        <th>Tên phòng</th>
-                                                        <th>Tổng số lượng TS-CCDC hiện có</th>
-                                                        <th>Ngày cập nhật cuối cùng</th>
-                                                        <th>Ngày tạo</th>
-                                                        <th style="width: 125px;">Hành động</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td style="color:red">E3-103</td>
-                                                        <td style="color:yellow">5407</td>
-                                                        <td>
-                                                            August 05 2018 <small class="text-muted">10:29 PM</small>
-                                                        </td>
-                                                        <td>
-                                                            Mastercard
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
+                                    <div class="col-xl-4">
+                                        <div class="text-xl-end mt-xl-0 mt-2">
+                                            <button type="button" class="btn btn-light mb-2">Import</button>
+                                            <button type="button" class="btn btn-light mb-2">Export</button>
                                         </div>
+                                    </div><!-- end col-->
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="table_pb" class="table table-centered mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th style="text-align:center;">STT</th>
+                                                <th style="text-align:center;">Tên phòng</th>
+                                                <th style="width: 400px; text-align: center;">Tổng số lượng TS-CCDC hiện có</th>
+                                                <th style="text-align:center;">Ngày tạo</th>
+                                                <th style="width: 400px;text-align: center;">Hành động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div> <!-- end col -->
                         </div>
                     </div>
@@ -155,20 +135,92 @@
                 </div>
 
 
-               
+
             </div>
         </div>
     </div>
 </div>
 
+<div id="modal_chitiet_phanbo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fullWidthModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-width modal-dialog-top">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p style="text-align:center;font-weight: bold; font-size: 22px;" class="modal-title" id="modal_tieude">Chi tiết phân bố</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body">
+
+               
+
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <center><p style="color: yellow; font-weight: bold; font-size: 20px;" class="header-title">Chi tiết các tài sản có trong phòng học</p></center>
+                                <hr>
+                                
+                                <table id="basic-datatable" class="table table-bordered dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã tài sản</th>
+                                            <th>Thuộc nhóm tài sản</th>
+                                            <th>Tên tài sản</th>
+                                            <th>Số lượng</th>
+                                            <th>Hãng sản xuất</th>
+                                            <th>Năm sản xuất</th>
+                                            <th>Nước sản xuất</th>
+                                            <th>Ghi chú</th>
+                                            <th>Ngày thêm</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                      
+                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Thêm tài sản cho phòng này</button>
+                <button type="button" class="btn btn-primary">Chỉnh sửa tài sản phòng này</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tắt</button>
+            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
 <script>
 
 $(document).ready(function () {
-    LoadData_Option_TaiSan();
+    //LoadData_Option_TaiSan();
     LoadData_Option_Phong();
     LoadData_PhanBo();
+    $('#MaPhong').on('select2:select', function (e) {
+        var data = e.params.data;
+        if (data.id != "Chọn phòng....") {
+            LoadData_Option_TaiSan(data.id);
+        }
+
+    });
 });
+
+
 
 $("#XacNhan_Them").click(function () {
     var MaPhong = $('#MaPhong').select2('data')[0].id;
@@ -176,24 +228,52 @@ $("#XacNhan_Them").click(function () {
         if ($('#TaiSan :selected').length <= 0) {
             ThongBao("Có lỗi !!!", "Vui lòng không để trống TS-CDCC");
         } else {
-            $('#TaiSan :selected').each(function (i, sel) {
-                Add_PhanBo($(sel).val(), 2, MaPhong, $("#GhiChu").val());
+
+
+
+            $.confirm({
+                title: 'Thông báo',
+                content: "Bạn có chắc chắn muốn thêm TS-CDCC này vào phòng: " + $('#MaPhong').select2('data')[0].text,
+                theme: 'dark',
+                buttons: {
+                    XacNhan: {
+                        text: 'Xác nhận', btnClass: 'btn-success', action: function () {
+                            $('#TaiSan :selected').each(function (i, sel) {
+                                Add_PhanBo($(sel).val(), 2, MaPhong, $("#GhiChu").val());
+                            });
+                            setTimeout(function () {
+                                LoadData_PhanBo();
+                                LoadData_Option_Phong();
+                                $("#GhiChu").val("");
+                                $("#TaiSan").empty();
+                                ThongBao("Thành công", "Phân bố TS-CDCC thành công !!!");
+                            }, 100);
+                        }
+                    },
+                    HuyBo: {
+                        text: 'Hủy bỏ', btnClass: 'btn-warning', action: function () {
+                            ThongBao("Thành công", "Đã hủy bỏ thêm phòng !!!");
+                        }
+                    }
+                }
             });
-            LoadData_Option_TaiSan();
-            LoadData_Option_Phong();
-            LoadData_PhanBo()
-            $("#GhiChu").val("");
-            ThongBao("Thành công","Phân bố TS-CDCC thành công !!!")
+
+
+
         }
     } else {
         ThongBao("Có lỗi !!!", "Vui lòng chọn phòng cần thêm tài sản...");
     }
 });
 
+
+
+
 $("#Huy_Them").click(function () {
-    LoadData_Option_TaiSan();
     LoadData_Option_Phong();
+    LoadData_PhanBo();
     $("#GhiChu").val("");
+    $("#TaiSan").empty();
 });
 
 
@@ -206,53 +286,55 @@ function LoadData_Option_Phong() {
         url: '@Url.Action("Select_Phong", "Phong")',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
+        async: true,
+        processData: false,
+        cache: false,
         success: function(data) {
             var items = '';
-
             $.each(data.data, function(i, item) {
-                $.ajax({
-                    type: 'GET',
-                    url: '@Url.Action("Check_PhanBo", "PhanBo")',
-                    dataType: 'json',
-                    data: {
-                        iMaPhong: item.MaPhong
-                    },
-                    contentType: 'application/json;charset=utf-8',
-                    success: function(data) {
-                        if (data.code.toString().search("1") < 0) {
-                            $('#MaPhong').append($('<option>', {
-                                value: item.MaPhong,
-                                text: item.TenPhong
-                            }));
-                        }
-                    },
-                    error: function(ex) {
-                        alert("Error_Load_Data");
-                    }
-                });
-
-
+                $('#MaPhong').append($('<option>', {value: item.MaPhong,text: item.TenPhong}));
             });
         },
         error: function(ex) {
             alert("Error_Load_Data");
         }
     });
-
     return false;
 }
 
-function LoadData_Option_TaiSan() {
+function LoadData_Option_TaiSan(iMaPhong) {
     $("#TaiSan").empty();
     $.ajax({
         type: 'GET',
         url: '@Url.Action("Select_TaiSan", "TaiSan")',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
+        async: true,
+        processData: false,
+        cache: false,
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
-                $('#TaiSan').append($('<option>', { value: item.MaTS, text: item.TenTS }));
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("LoadTaiSan_TheoMaPhong", "PhanBo")',
+                dataType: 'json',
+                data: { iMaPhong: iMaPhong, iMaTS: item.MaTS },
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if (data.code == false) {
+                        if (item.SoLuong >= 1) {
+                            $('#TaiSan').append($('<option>', { value: item.MaTS, text: item.TenTS + " - Số lượng còn lại: " + item.SoLuong }));
+                        }
+                  }
+            },
+            error: function (ex) {
+                alert("Không có loại phòng này !!!");
+            }
+            });
+
+
+
             });
         },
         error: function (ex) {
@@ -271,20 +353,20 @@ function LoadData_PhanBo() {
         url: '@Url.Action("Select_PhanBo", "PhanBo")',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
+        async: true,
+        processData: false,
+        cache: false,
         success: function (data) {
             var items = '';
             var iii = 1;
             $.each(data.data, function (i, item) {
-                var rows = "<tr>"
-                    + "<td>" + iii++ + "</td>"
-                    + '<td style="color:red">' + item.TenPhong + "</td>"
-                    + '<td style="color:yellow">' + item.SoLuong + "</td>"
-                    + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
-                    + "<td>" + ToJavaScriptDate(item.NgayTao) + "</td>"
-                    + '<td>'
-                    + '<a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>'
-                    + '<a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>'
-                    + '<a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>'
+                var rows = "<tr style='font-size: 16px;'>"
+                    + "<td style='font-weight: bold;text-align:center;'>#" + iii++ + "</td>"
+                    + '<td style="font-weight: bold;text-align:center;color:red">' + item.TenPhong + "</td>"
+                    + '<td style="font-weight: bold;text-align:center;color:yellow">' + item.SoLuong + "</td>"
+                    + "<td style='font-style: italic;text-align:center;'>" + ToJavaScriptDate(item.NgayTao) + "</td>"
+                    + '<td style="text-align:center;">'
+                    + '<button type="button" onclick = "Detail_PhanBo(' + item.MaPhong + ')" class="btn btn-info"><i class="mdi mdi-eye"></i>Xem chi tiết</button>'
                     + "</td>";
                 $('#table_pb').append(rows);
             });
@@ -296,10 +378,14 @@ function LoadData_PhanBo() {
     return false;
 }
 
+function LoadData_PhanBo_Theo_MaPhong(MaPhong) {
+
+    return false;
+}
 
 function Add_PhanBo(MaTS, MaND, MaPhong, GhiChu) {
     $.ajax({
-        url: '@Url.Action("Insert_PhanBo", "PhanBo")',
+        url: '@Url.Action("Insert_PhanBo_SoLuong_One", "PhanBo")',
         dataType: "json",
         type: "POST",
         contentType: 'application/json; charset=utf-8',
@@ -309,9 +395,9 @@ function Add_PhanBo(MaTS, MaND, MaPhong, GhiChu) {
         cache: false,
         success: function (data) {
             if (data.code == true) {
-                console.log(MaTS + " Thanh Cong");
+                return true;
             } else {
-                console.log(MaTS + " That Bai");
+                return false;
             }
         },
         error: function (xhr) {
@@ -320,6 +406,44 @@ function Add_PhanBo(MaTS, MaND, MaPhong, GhiChu) {
     })
 }
 
+function Detail_PhanBo(MaPhong) {
+    $("#basic-datatable tbody tr").remove();
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("Select_PhanBo_Theo_MaPhong", "PhanBo")',
+        data: { MaPhong: MaPhong },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        cache: false,
+        success: function (data) {
+            var items = '';
+            $.each(data.data, function (i, item) {
+                var rows = "<tr>"
+                    + "<td>#" + item.MaTS + "</td>"
+                    + '<td><h3><span class="badge bg-success text-light">' + item.TenNhomTS + '</span></h3></td>'
+                    + '<td><h3><span class="badge bg-secondary text-light">' + item.TenTS + '</span></h3></td>'
+                    + '<td><h4><span class="badge bg-danger">' + item.SoLuong + '</span></h4></td>'
+                    + "<td>" + item.HangSanXuat + "</td>"
+                    + "<td>" + item.NamSanXuat + "</td>"
+                    + "<td>" + item.NuocSanXuat + "</td>"
+                    + "<td>" + item.GhiChu + "</td>"
+                    + "<td>" + ToJavaScriptDate(item.NgayCapNhat) + "</td>"
+                $('#basic-datatable').append(rows);
+                setTimeout(function () {
+                    $("#modal_chitiet_phanbo").modal("show");
+                }, 100);
+            });
+        },
+        error: function (ex) {
+            $("#basic-datatable tbody tr").remove();
+            $("#modal_chitiet_phanbo").modal("hide");
+            alert("Error_Load_Data");
+        }
+    });
+    
+}
+
+
 function ThongBao(title, content) {
     $.alert({
         title: title,
@@ -327,6 +451,10 @@ function ThongBao(title, content) {
         content: content,
     });
 }
+
+
+
+
 
 
 
