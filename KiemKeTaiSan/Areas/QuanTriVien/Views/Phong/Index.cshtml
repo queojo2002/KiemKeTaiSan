@@ -119,7 +119,30 @@
 
 <script>
 
+    $(document).ready(function () {
 
+        var Table_P = $('#table_phong').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+        var Table_KVPhong = $('#table_kvphong').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+        var Table_LoaiPhong = $('#table_loaiphong').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+    });
 
 function LoadData_LoaiPhong() {
     $("#table_loaiphong tbody tr").remove();

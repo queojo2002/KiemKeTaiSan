@@ -119,6 +119,40 @@
 
 <script>
 
+
+    $(document).ready(function () {
+
+        var Table_TS = $('#table_taisan').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+        var Table_NTS = $('#table_nhomtaisan').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+        var Table_LTS = $('#table_loaitaisan').DataTable({
+            "ordering": false,
+            responsive: true,
+            paging: true,
+        });
+
+
+    });
+
+
+
+
+
+
+
+
+
 function LoadData_LoaiTaiSan() {
     $("#table_loaitaisan tbody tr").remove();
     $.ajax({

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using KiemKeTaiSan.Models;
@@ -43,16 +44,25 @@ namespace KiemKeTaiSan.Areas.QuanTriVien.Controllers
         }
 
         [HttpGet]
-        public JsonResult Select_PhanBo_Theo_MaPhong(int MaPhong)
+        public JsonResult Select_PhanBo_By_MaPhong(int MaPhong)
         {
             var get_data = from s in db.PhanBos
                            where s.MaPhong == MaPhong
                            join ts1 in db.TaiSans on s.MaTS equals ts1.MaTS
                            join nts in db.NhomTaiSans on ts1.MaNhomTS equals nts.MaNhomTS
-                           select new { s.MaTS, ts1.MaNhomTS, nts.TenNhomTS, ts1.TenTS, ts1.GiaTri, s.SoLuong, ts1.HangSanXuat, ts1.NamSanXuat, ts1.NuocSanXuat, s.GhiChu, s.NgayCapNhat };
-
-           // select new { MaPhong = s.MaPhong, SoLuong = g.Sum(pc => pc.SoLuong), TenPhong = p1.TenPhong, NgayCapNhat = g.First().NgayCapNhat, NgayTao = g.First().NgayTao };
-
+                           select new { 
+                               s.MaTS, 
+                               ts1.MaNhomTS, 
+                               nts.TenNhomTS, 
+                               ts1.TenTS, 
+                               ts1.GiaTri, 
+                               s.SoLuong, 
+                               ts1.HangSanXuat, 
+                               ts1.NamSanXuat, 
+                               ts1.NuocSanXuat, 
+                               s.GhiChu, 
+                               s.NgayCapNhat 
+                           };
             return Json(new { data = get_data.OrderByDescending(s => s.NgayCapNhat) }, JsonRequestBehavior.AllowGet);
 
 
@@ -60,69 +70,87 @@ namespace KiemKeTaiSan.Areas.QuanTriVien.Controllers
         }
 
 
-        [HttpGet]
-        public JsonResult LoadTaiSan_TheoMaPhong(int iMaPhong, int iMaTS)
-        {
-            var get_data = from s in db.PhanBos.OrderByDescending(a => a.MaPhong)
-                           where s.MaPhong == iMaPhong
-                           where s.MaTS == iMaTS
-                           select new { s.MaPhong, s.MaTS, s.GhiChu, s.NgayCapNhat };
-            if (get_data.Count() <= 0)
-            {
-                return Json(new { code = false }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(new { code = true }, JsonRequestBehavior.AllowGet);
-
-            }
-        }
-
-
         [HttpPost]
         public JsonResult Insert_PhanBo_SoLuong_One(PhanBo pb)
         {
-            var check_is = from s in db.PhanBos.OrderByDescending(a => a.MaPhong)
+            var check_is = from s in db.PhanBos
                            where s.MaTS == pb.MaTS
-                           select s;
-            if (check_is.Count() < 0)
-            {
-                return Json(new { Message = "Thêm mới thất bại", code = false });
-            }
-            try
-            {
-                
+                           where s.MaPhong == pb.MaPhong
+                           select s; // kiểm tra TS đã có trong phòng chưa
 
-                // update lại tài sản
-                var ts = db.TaiSans.SingleOrDefault(s => s.MaTS == pb.MaTS);
-                if (ts.SoLuong >= 1)
+            if (check_is.Count() <= 0) // nếu chưa có 
+            {
+                try
                 {
-                    ts.SoLuong -= 1;
-                    db.SubmitChanges();
-
-                    // insert vào phân bố
-                    pb.NgayTao = DateTime.Now;
-                    pb.NgayCapNhat = DateTime.Now;
-                    if (string.IsNullOrEmpty(pb.GhiChu))
+                    // update lại tài sản
+                    var ts = db.TaiSans.SingleOrDefault(s => s.MaTS == pb.MaTS);
+                    if (ts.SoLuong >= 1)
                     {
-                        pb.GhiChu = "Không có";
+                        if (pb.SoLuong > ts.SoLuong)
+                        {
+                            return Json(new { Message = "Số lượng không hợp lệ", code = false });
+                        }
+                        ts.SoLuong -= pb.SoLuong;
+                        db.SubmitChanges();
+
+                        // insert vào phân bố
+                        pb.NgayTao = DateTime.Now;
+                        pb.NgayCapNhat = DateTime.Now;
+                        if (string.IsNullOrEmpty(pb.GhiChu))
+                        {
+                            pb.GhiChu = "Không có";
+                        }
+                        db.PhanBos.InsertOnSubmit(pb);
+                        db.SubmitChanges();
+                        return Json(new { Message = "Thêm mới thành công", code = true });
                     }
-                    db.PhanBos.InsertOnSubmit(pb);
-                    db.SubmitChanges();
-                    return Json(new { Message = "Thêm mới thành công", code = true });
+                    else
+                    {
+                        return Json(new { Message = "Thêm mới thất bại, do tài sản không đủ số lượng", code = true });
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    return Json(new { Message = "Thêm mới thất bại, do tài sản không đủ số lượng", code = true });
+                    return Json(new { Message = ex.Message, code = false });
                 }
+            }else
+            { // nếu có rồi
+                try
+                {
+                    // update lại tài sản
+                    var ts = db.TaiSans.SingleOrDefault(s => s.MaTS == pb.MaTS);
+                    if (ts.SoLuong >= 1)
+                    {
+                        if (pb.SoLuong > ts.SoLuong)
+                        {
+                            return Json(new { Message = "Số lượng không hợp lệ", code = false });
+                        }
+                        ts.SoLuong -= pb.SoLuong;
+                        db.SubmitChanges();
 
-
-                
+                        // update vào phân bố
+                        check_is.SingleOrDefault().NgayCapNhat = DateTime.Now;
+                        check_is.SingleOrDefault().SoLuong += pb.SoLuong;
+                        if (string.IsNullOrEmpty(pb.GhiChu))
+                        {
+                            check_is.SingleOrDefault().GhiChu = "Không có";
+                        }
+                        
+                        db.SubmitChanges();
+                        return Json(new { Message = "Thêm mới thành công", code = true });
+                    }
+                    else
+                    {
+                        return Json(new { Message = "Thêm mới thất bại, do tài sản không đủ số lượng", code = true });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Message = ex.Message, code = false });
+                }
             }
-            catch (Exception ex)
-            {
-                return Json(new { Message = ex.Message, code = false });
-            }
+           
         }
 
 

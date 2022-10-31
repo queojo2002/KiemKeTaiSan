@@ -486,6 +486,8 @@ namespace KiemKeTaiSan.Models
 		
 		private System.Nullable<int> _GiaTri;
 		
+		private System.Nullable<int> _SoLuongChinh;
+		
 		private System.Nullable<int> _SoLuong;
 		
 		private string _HangSanXuat;
@@ -516,6 +518,8 @@ namespace KiemKeTaiSan.Models
     partial void OnTenTSChanged();
     partial void OnGiaTriChanging(System.Nullable<int> value);
     partial void OnGiaTriChanged();
+    partial void OnSoLuongChinhChanging(System.Nullable<int> value);
+    partial void OnSoLuongChinhChanged();
     partial void OnSoLuongChanging(System.Nullable<int> value);
     partial void OnSoLuongChanged();
     partial void OnHangSanXuatChanging(string value);
@@ -623,6 +627,26 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongChinh", DbType="Int")]
+		public System.Nullable<int> SoLuongChinh
+		{
+			get
+			{
+				return this._SoLuongChinh;
+			}
+			set
+			{
+				if ((this._SoLuongChinh != value))
+				{
+					this.OnSoLuongChinhChanging(value);
+					this.SendPropertyChanging();
+					this._SoLuongChinh = value;
+					this.SendPropertyChanged("SoLuongChinh");
+					this.OnSoLuongChinhChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
 		public System.Nullable<int> SoLuong
 		{
@@ -703,7 +727,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -923,7 +947,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTa", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTa", DbType="NVarChar(300)")]
 		public string MoTa
 		{
 			get
@@ -1109,7 +1133,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -1295,7 +1319,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -1481,7 +1505,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -1758,7 +1782,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucDanh", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChucDanh", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string ChucDanh
 		{
 			get
@@ -2069,7 +2093,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -2409,7 +2433,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -2733,7 +2757,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
@@ -3035,7 +3059,7 @@ namespace KiemKeTaiSan.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(300)")]
 		public string GhiChu
 		{
 			get
