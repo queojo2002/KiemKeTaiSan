@@ -261,7 +261,14 @@ $(document).ready(function () {
     });
 
     Load_Data_DSPhong();
-    Load_Table_ChiTiet_PhanBo(Table_ChiTiet_PhanBo, Table_Show_ChiTiet_PhanBo);
+    Load_Table_ChiTiet_PhanBo(Table_ChiTiet_PhanBo);
+
+  
+
+    $('button[name="Xem_ChiTiet"]').click(function (e) {
+        var id_Phong = $(this).attr('id');
+        Load_ChiTiet_PhanBo(Table_Show_ChiTiet_PhanBo, id_Phong);
+    });
     $('#MaPhong').on('select2:select', function (e) {
         var data = e.params.data;
         if (data.id != "Chọn phòng....") { // nếu click khác "chọn phòng...." thì mới hiển thị ds tài sản
@@ -329,7 +336,12 @@ $('#TaiSan').on('select2:select', function (e) { // nếu click vào chọn thi�
                                 Table_List_TaiSan_Add.clear().draw();
                                 Table_Info_TaiSan_Theo_Phong.clear().draw(); // xóa table hiển thị ds tài sản theo phòng
                                 Load_Data_DSTaiSan();
-                                Load_Data_PhanBo_Theo_MaPhong(Table_Info_TaiSan_Theo_Phong, MaPhong);
+                                Load_Table_ChiTiet_PhanBo(Table_ChiTiet_PhanBo);
+                                $('button[name="Xem_ChiTiet"]').click(function (e) {
+                                    var id_Phong = $(this).attr('id');
+                                    Load_ChiTiet_PhanBo(Table_Show_ChiTiet_PhanBo, id_Phong);
+                                });
+                                //Load_Data_PhanBo_Theo_MaPhong(Table_Info_TaiSan_Theo_Phong, MaPhong);
                                 Load_Data_DSPhong();
                                 ThongBao("Thành công", "Phân bố TS-CDCC thành công !!!");
                             }, 100);
@@ -363,11 +375,7 @@ $('#TaiSan').on('select2:select', function (e) { // nếu click vào chọn thi�
 
 
 
-    $('button[name="Xem_ChiTiet"]').click(function (e) {
-        e.preventDefault();
-        var id_Phong = $(this).attr('id');
-        Load_ChiTiet_PhanBo(Table_Show_ChiTiet_PhanBo, id_Phong);
-    });
+   
 
 
 });
