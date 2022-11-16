@@ -46,6 +46,18 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane show active" id="phong_view">
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#add_new_phong" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Thêm mới Phòng</a>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="text-sm-end">
+                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
                         <div class="table-responsive-sm">
                             <table id="table_phong" class="table dt-responsive nowrap w-100">
                                 <thead>
@@ -67,6 +79,18 @@
                     </div>
 
                     <div class="tab-pane" id="khuvucphong_view">
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#add_new_kvphong" class="btn btn-warning mb-2"><i class="mdi mdi-plus-circle me-2"></i> Thêm mới khu vực phòng</a>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="text-sm-end">
+                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
                         <div class="table-responsive-sm">
                             <table id="table_kvphong" class="table dt-responsive nowrap w-100">
                                 <thead>
@@ -87,6 +111,18 @@
 
 
                     <div class="tab-pane" id="loaiphong_view">
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#add_new_loaiphong" class="btn btn-info mb-2"><i class="mdi mdi-plus-circle me-2"></i> Thêm mới loại phòng</a>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="text-sm-end">
+                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
                         <div class="table-responsive-sm">
                             <table id="table_loaiphong" class="table dt-responsive nowrap w-100">
                                 <thead>
@@ -141,11 +177,18 @@
             paging: true,
         });
 
+        LoadData_Phong(Table_P);
+        LoadData_KhuVucPhong(Table_KVPhong);
+        LoadData_LoaiPhong(Table_LoaiPhong);
 
     });
 
-function LoadData_LoaiPhong() {
+
+
+
+function LoadData_LoaiPhong(Name_DataTable) {
     $("#table_loaiphong tbody tr").remove();
+    Name_DataTable.clear().draw();
     $.ajax({
         type: 'GET',
         url: '@Url.Action("Select_LoaiPhong", "Phong")',
@@ -154,6 +197,17 @@ function LoadData_LoaiPhong() {
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
+
+
+                Name_DataTable.row.add([
+                    '<h4><span class="badge badge-primary-lighten rounded-pill">' + item.MaLP + '</span></h4>',
+                    '<h4><span class="badge bg-secondary text-light">' + item.TenLP +'</span></h4>',
+                    item.GhiChu,
+                    ToJavaScriptDate(item.NgayCapNhat),
+                    '<a onclick = "show_modal_edit(' + item.MaLP +',"loaiphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a><a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a>'
+                ]).draw(false);
+
+                /*
                 var rows = "<tr>"
                     + '<td><a href="#" class="text-body fw-bold">#' + item.MaLP + '</a></td>'
                     + "<td>" + item.TenLP + "</td>"
@@ -163,6 +217,7 @@ function LoadData_LoaiPhong() {
                     + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
                     + "</tr>";
                 $('#table_loaiphong').append(rows);
+                */
             });
         },
         error: function (ex) {
@@ -172,8 +227,9 @@ function LoadData_LoaiPhong() {
     return false;
 }
 
-function LoadData_KhuVucPhong() {
-    $("#table_kvphong tbody tr").remove();
+function LoadData_KhuVucPhong(Name_DataTable) {
+    //$("#table_kvphong tbody tr").remove();
+    Name_DataTable.clear().draw();
     $.ajax({
         type: 'GET',
         url: '@Url.Action("Select_KhuVucPhong", "Phong")',
@@ -182,6 +238,15 @@ function LoadData_KhuVucPhong() {
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
+
+                Name_DataTable.row.add([
+                    '<h4><span class="badge badge-primary-lighten rounded-pill">' + item.MaKV + '</span></h4>',
+                    '<h4><span class="badge bg-info text-light">' + item.TenKV + '</span></h4>',
+                    item.GhiChu,
+                    ToJavaScriptDate(item.NgayCapNhat),
+                    '<a onclick = "show_modal_edit(' + item.MaLP +',"khuvucphong_edit");" href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-pencil"></i></a><a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a>'
+                ]).draw(false);
+                /*
                 var rows = "<tr>"
                     + '<td><a href="#" class="text-body fw-bold">#' + item.MaKV + '</a></td>'
                     + "<td>" + item.TenKV + "</td>"
@@ -191,6 +256,7 @@ function LoadData_KhuVucPhong() {
                     + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
                     + "</tr>";
                 $('#table_kvphong').append(rows);
+                */
             });
         },
         error: function (ex) {
@@ -200,8 +266,10 @@ function LoadData_KhuVucPhong() {
     return false;
     }
 
- function LoadData_Phong() {
-     $("#table_phong tbody tr").remove();
+function LoadData_Phong(Name_DataTable) {
+    //$("#table_phong tbody tr").remove();
+     Name_DataTable.clear().draw();
+
     $.ajax({
         type: 'GET',
         url: '@Url.Action("Select_Phong", "Phong")',
@@ -210,6 +278,21 @@ function LoadData_KhuVucPhong() {
         success: function (data) {
             var items = '';
             $.each(data.data, function (i, item) {
+
+
+                Name_DataTable.row.add([
+                    '<h4><span class="badge badge-primary-lighten rounded-pill">' + item.MaPhong + '</span></h4>',
+                    '<h4><span class="badge bg-primary text-light">' + item.TenPhong + '</span></h4>',
+                    '<h4><span class="badge bg-info text-light">' + item.TenKV + '</span></h4>',
+                    '<h4><span class="badge bg-secondary text-light">' + item.TenLP + '</span></h4>',
+                    item.GhiChu,
+                    ToJavaScriptDate(item.NgayCapNhat),
+                    '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-eye"></i></a><a onclick = "show_modal_edit(' + item.MaLP +', "phong_edit");" href = "javascript:void(0)" class="action-icon" > <i class="mdi mdi-pencil"></i></a><a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a>'
+                ]).draw(false);
+
+                /*
+
+
                 var rows = "<tr>"
                     + '<td><a href="#" class="text-body fw-bold">#' + item.MaPhong + '</a></td>'
                     + "<td>" + item.TenPhong + "</td>"
@@ -223,6 +306,8 @@ function LoadData_KhuVucPhong() {
                     + '<a href="javascript:void(0)" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>'
                     + "</tr>";
                 $('#table_phong').append(rows);
+
+                */
             });
         },
         error: function (ex) {
@@ -231,9 +316,7 @@ function LoadData_KhuVucPhong() {
     });
     return false;
 }
-    LoadData_Phong();
-    LoadData_KhuVucPhong();
-    LoadData_LoaiPhong();
+
 
 
 </script>

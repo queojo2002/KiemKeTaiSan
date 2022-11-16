@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KiemKeTaiSan" Class="kktsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-0KAI17V;Initial Catalog=KiemKeTaiSan;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KiemKeTaiSanConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MSI;Initial Catalog=KiemKeTaiSan;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KiemKeTaiSanConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietPhieuKiemKe" Member="ChiTietPhieuKiemKes">
     <Type Name="ChiTietPhieuKiemKe">
       <Column Name="MaPhieu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

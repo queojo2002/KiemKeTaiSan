@@ -133,7 +133,7 @@
                     <div class="tab-pane show" id="dspb_view">
                         <div class="row">
                             <div class="col-12">
-                                
+
                                 <div class="table-responsive">
                                     <table id="table_chitiet_phanbo" class="table dt-responsive nowrap w-100">
                                         <thead class="table-light">
@@ -177,7 +177,7 @@
                                 <hr>
                                 <table id="table_show_chitiet_phanbo" class="table table-bordered dt-responsive nowrap w-100">
                                     <thead>
-                                        <tr>
+                                        <tr style="text-align:center">
                                             <th>Mã tài sản</th>
                                             <th>Thuộc nhóm tài sản</th>
                                             <th>Tên tài sản</th>
@@ -189,7 +189,7 @@
                                             <th>Ngày thêm</th>
                                         </tr>
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody style="text-align:center"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -263,7 +263,7 @@ $(document).ready(function () {
     Load_Data_DSPhong();
     Load_Table_ChiTiet_PhanBo(Table_ChiTiet_PhanBo);
 
-  
+
 
     $('button[name="Xem_ChiTiet"]').click(function (e) {
         var id_Phong = $(this).attr('id');
@@ -375,7 +375,7 @@ $('#TaiSan').on('select2:select', function (e) { // nếu click vào chọn thi�
 
 
 
-   
+
 
 
 });
@@ -392,7 +392,11 @@ $('#TaiSan').on('select2:select', function (e) { // nếu click vào chọn thi�
         Name_DataTable.clear().draw();
         if (Get_DSPB_ByMaPhong != "Error_Get_Data_PhanBo_By_MaPhong") { // nếu get phân bổ theo mã phòng mà không có lỗi gì thì...
             $.each(Get_DSPB_ByMaPhong.data, function (i, item) {
-                Name_DataTable.row.add(["<h4>" + item.MaTS + "</h4>", '<h4><span class="badge bg-success text-light">' + item.TenNhomTS + '</span></h4>', '<h4><span class="badge bg-secondary text-light">' + item.TenTS + '</span></h4>', '<h4><span class="badge bg-danger">' + item.SoLuong + '</span></h4>', item.GhiChu]).draw(false);
+                Name_DataTable.row.add([
+                    "<h4>" + item.MaTS + "</h4>",
+                    '<h4><span class="badge bg-danger text-light">' + item.TenNhomTS + '</span></h4>',
+                    '<h4><span class="badge bg-dark text-light">' + item.TenTS + '</span></h4>',
+                    '<h4><span class="badge bg-light text-dark">' + item.SoLuong + '</span></h4>', item.GhiChu]).draw(false);
             });
         } else { // lúc này xãy ra lỗi
             Name_DataTable.clear().draw();
@@ -412,11 +416,11 @@ function Load_Table_ChiTiet_PhanBo(Name_DataTable) {
             var iii = 1;
             $.each(data.data, function (i, item) {
 
-                
+
                 Name_DataTable.row.add([
-                    "<p style='font-weight: bold;text-align:center;'>#" + iii++ + "</p>", 
-                    '<p style="font-weight: bold;text-align:center;color:red">' + item.TenPhong + "</p>", 
-                    '<p style="font-weight: bold;text-align:center;color:yellow">' + item.SoLuong + "</p>", 
+                    '<center><h3><span class="badge badge-primary-lighten rounded-pill">' + iii++ + '</span></h3></center>',
+                    '<center><h3><span class="badge bg-primary text-light">' + item.TenPhong + '</span></h3></center>',
+                    '<center><h3><span class="badge bg-light text-dark">' + item.SoLuong + '</span></h3></center >',
                     "<p style='font-style: italic;text-align:center;'>" + ToJavaScriptDate(item.NgayTao) + "</p>",
                     '<p style="text-align:center;"><button type="button" name = "Xem_ChiTiet" id = "'+item.MaPhong+'" class="btn btn-info"><i class="mdi mdi-eye"></i>Xem chi tiết</button></p>'
 
@@ -444,10 +448,11 @@ function Load_ChiTiet_PhanBo(Name_DataTable, MaPhong) {
             var items = '';
             $.each(data.data, function (i, item) {
                 Name_DataTable.row.add([
-                    "#" + item.MaTS + "",
+
+                    '<h3><span class="badge badge-primary-lighten rounded-pill">' + item.MaTS +'</span></h3>',
                     '<h3><span class="badge bg-success text-light">' + item.TenNhomTS + '</span></h3>',
                     '<h3><span class="badge bg-secondary text-light">' + item.TenTS + '</span></h3>',
-                    '<h4><span class="badge bg-danger">' + item.SoLuong + '</span></h4>',
+                    '<h3><span class="badge bg-light text-dark">' + item.SoLuong + '</span></h3>',
                     item.HangSanXuat,
                     item.NamSanXuat,
                     item.NuocSanXuat,

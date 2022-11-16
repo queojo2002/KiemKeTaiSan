@@ -66,7 +66,7 @@ namespace KiemKeTaiSan.Models
     #endregion
 		
 		public kktsDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["KiemKeTaiSanConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["KiemKeTaiSanConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
