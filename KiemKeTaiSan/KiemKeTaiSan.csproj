@@ -122,6 +122,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\LoaiPhongController.cs" />
+    <Compile Include="Areas\QuanTriVien\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\PhanBoController.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\PhongController.cs" />
     <Compile Include="Areas\QuanTriVien\Controllers\TaiSanController.cs" />
@@ -425,6 +426,7 @@
     <Content Include="Areas\QuanTriVien\Views\TaiSan\Index.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\PhanBo\XemDanhSachPhanBo.cshtml" />
     <Content Include="Areas\QuanTriVien\Views\PhanBo\PhanBoThietBi.cshtml" />
+    <Content Include="Areas\QuanTriVien\Views\NguoiDung\Index.cshtml" />
     <None Include="Models\kkts.dbml.layout">
       <DependentUpon>kkts.dbml</DependentUpon>
     </None>

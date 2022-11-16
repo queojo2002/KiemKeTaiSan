@@ -66,7 +66,7 @@ namespace KiemKeTaiSan.Models
     #endregion
 		
 		public kktsDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["KiemKeTaiSanConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["KiemKeTaiSanConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1629,6 +1629,8 @@ namespace KiemKeTaiSan.Models
 		
 		private string _ChucDanh;
 		
+		private System.Nullable<short> _PhanQuyen;
+		
 		private string _SoDienThoai;
 		
 		private string _Email;
@@ -1659,6 +1661,8 @@ namespace KiemKeTaiSan.Models
     partial void OnHoVaTenChanged();
     partial void OnChucDanhChanging(string value);
     partial void OnChucDanhChanged();
+    partial void OnPhanQuyenChanging(System.Nullable<short> value);
+    partial void OnPhanQuyenChanged();
     partial void OnSoDienThoaiChanging(string value);
     partial void OnSoDienThoaiChanged();
     partial void OnEmailChanging(string value);
@@ -1798,6 +1802,26 @@ namespace KiemKeTaiSan.Models
 					this._ChucDanh = value;
 					this.SendPropertyChanged("ChucDanh");
 					this.OnChucDanhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhanQuyen", DbType="SmallInt")]
+		public System.Nullable<short> PhanQuyen
+		{
+			get
+			{
+				return this._PhanQuyen;
+			}
+			set
+			{
+				if ((this._PhanQuyen != value))
+				{
+					this.OnPhanQuyenChanging(value);
+					this.SendPropertyChanging();
+					this._PhanQuyen = value;
+					this.SendPropertyChanged("PhanQuyen");
+					this.OnPhanQuyenChanged();
 				}
 			}
 		}
